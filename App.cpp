@@ -171,7 +171,7 @@ void App::draw() {
 
 	}else if (state == PLAYING){
 
-		if(spritesKilled == 27){
+		if(spritesKilled == 26){
 
 			gameOver = true;
 			state = GAMEWIN;
@@ -224,7 +224,7 @@ void App::draw() {
 		}
 
 		print(-0.9, -0.7, 0.0, "ESC = Menu");
-		print(-0.9, -0.8, 0.0, "R = restart");
+		print(-0.9, -0.8, 0.0, "R = Restart");
 
 		if(!paused){
 
@@ -390,7 +390,7 @@ void App::keyPress(unsigned char key) {
 
 			if(up){
 
-				playerChar->test->setY(playerChar->test->getY() - 0.05);
+				playerChar->test->setY(playerChar->test->getY() + 0.05);
 
 			}else{
 
