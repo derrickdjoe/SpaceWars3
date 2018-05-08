@@ -26,6 +26,7 @@ deque<Rectangle*>m3;
 vector<Rectangle*> menu;
 vector<string> scoreVec;
 deque<Enemies*> sprites;
+bool useSpecial = false;
 
 App::App(const char* label, int x, int y, int w, int h) : GlutApp(label, x, y, w, h) {
 	
@@ -170,7 +171,7 @@ void App::draw() {
 
 	}else if (state == PLAYING){
 
-		if(spritesKilled == 5){
+		if(spritesKilled == 27){
 
 			gameOver = true;
 			state = GAMEWIN;
@@ -366,7 +367,7 @@ void App::keyPress(unsigned char key) {
 			playerChar->fire();
 			missleCount++;
 
-		}else if (key == 'v') {
+		}else if (key == 'v' && useSpecial == true) {
 
 			//use Special
 			missleX = playerChar->test->getX() + (float)0.04;
@@ -383,6 +384,7 @@ void App::keyPress(unsigned char key) {
 			m3.push_back(new Rectangle(missleX2, missleY2 + (float)0.05, (float)0.02, (float)0.03, r2, r1, r3));
 			playerChar->fire();
 			missleCount++;
+			useSpecial = false;
 		
 		}else if(key == 'w'){
 
@@ -581,7 +583,8 @@ void App::idle() {
 							score += 50;
 
 						}else{
-						
+
+							useSpecial = true;
 							score += 100;
 
 						}
@@ -607,6 +610,7 @@ void App::idle() {
 
 						}else{
 						
+							useSpecial = true;
 							score += 100;
 
 						}
